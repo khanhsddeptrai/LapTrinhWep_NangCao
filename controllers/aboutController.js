@@ -1,8 +1,9 @@
 import express from "express";
 
 const getAboutPage = (req, res) => {
-    return res.render('pages/about', {
-        pageTitle: "About"
+    return res.render('partials/layout', {
+        page: 'pages/about',
+        pageTitle: 'About Page'
     })
 }
 
