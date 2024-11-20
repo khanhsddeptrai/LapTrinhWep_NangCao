@@ -24,7 +24,7 @@ const initWebRoute = (app) => {
     router.get('/user/:id', getUserDetail)
     router.get('/update/:id', getUpdateUser)
     router.post('/update/:id', postUpdateUser)
-    router.post('/delete/:id', deleteUser)
+    router.delete('/delete/:id', deleteUser)
 
     return app.use('/', router)
 }

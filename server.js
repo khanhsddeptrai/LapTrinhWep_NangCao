@@ -1,24 +1,29 @@
 import express from 'express'
 import dotenv from 'dotenv/config'
 import bodyParser from 'body-parser';
-// import expressLayouts from 'express-ejs-layouts';
-// app.use(expressLayouts);
+import methodOverride from 'method-override';
 
 import viewEngine from './config/viewEngine.js'
 import initWebRoute from './routes/webRoute.js';
-
+import initApiRoutes from './routes/api.js';
+import configCors from "./config/cors.js";
 
 
 const app = express();
+//config cors
+configCors(app)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//config method-override
+app.use(methodOverride('_method'));
 
 const port = process.env.PORT;
 
 viewEngine(app);
 initWebRoute(app);
+initApiRoutes(app);
 
 
 // app.get('/test', (req, res) => {
